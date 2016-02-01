@@ -1,0 +1,16 @@
+<h1>Listing of all posts</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Link</th>
+    <th>Link to post</th>
+  <tr>
+
+  <% @posts.each do |post| %>
+    <tr>
+      <td><%= post.title %></td>
+      <td><%= post.link %> </td>
+    </tr>
+  <% end %>
+</table>
