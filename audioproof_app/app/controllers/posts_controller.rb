@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+
+  http_basic_authenticate_with name: "ryan", password: "secret", except: [:index, :show]
+
   def index # dashboard? or should that be a separate view
     @posts = Post.all
   end
