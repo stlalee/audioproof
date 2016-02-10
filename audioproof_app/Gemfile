@@ -45,3 +45,8 @@ group :development do
   gem 'spring'
 end
 
+# tzinfo-data
+gem 'tzinfo-data', platforms: [:x64_mingw]
+
+# Previous version of coffee-script
+gem 'coffee-script-source', '1.8.0'
