@@ -3,10 +3,10 @@
 A network of music, experiences, and people.
 
 Created for UCSC CMPS 183 Winter Quarter 2016 by:
-Norberto Sanchez
-Stella Lee
-Ryan Fulscher
-Nick Church
+- Norberto Sanchez
+- Stella Lee
+- Ryan Fulscher
+- Nick Church
 
 # Notices
 
