@@ -2,7 +2,7 @@
   <%= link_to '#', post.user %>
   <span class="user"><%= link_to post.user.username, post.user %></span>
   <span class="content">
-    <%= post.content %>
+    <%= post.content.html_safe %>
     <%= image_tag post.picture.url if post.picture? %>
   </span>
   <span class="timestamp">
