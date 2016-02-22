@@ -26,6 +26,17 @@ ActiveRecord::Schema.define(version: 20160217205545) do
   add_index "comments", ["Post_id"], name: "index_comments_on_Post_id"
   add_index "comments", ["User_id"], name: "index_comments_on_User_id"
 
+  create_table "posts", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "picture"
+  end
+
+  add_index "posts", ["user_id", "created_at"], name: "index_posts_on_user_id_and_created_at"
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id"
+
   create_table "users", force: :cascade do |t|
     t.string   "email"
     t.datetime "created_at",      null: false
@@ -38,3 +49,4 @@ ActiveRecord::Schema.define(version: 20160217205545) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true
 
 end
+
