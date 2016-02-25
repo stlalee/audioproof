@@ -1,4 +1,21 @@
 michael:
-  name: Michael Example
+  username: michael
   email: michael@example.com
   password_digest: <%= User.digest('password') %>
+  remember_digest: <%= User.digest('password') %>
+
+test:
+  username: test
+  email: test@test.test
+  password_digest: <%= User.digest('test') %>
+
+no_username:
+  username:
+  email: goodemail@aol.net
+  password_digest: <%= User.digest('password') %>
+
+bad_email:
+  username: good_username
+  email: this_is_not_an_email
+  password_digest: <%= User.digest('password') %>
+
