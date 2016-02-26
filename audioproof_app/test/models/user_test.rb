@@ -3,20 +3,30 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
 
   def setup
-    @user = users(:michael)
+    @user = User.new
+    @user.username = "paul"
+    @user.email = "paul.is.cool@gmail.com"
+    @user.password = "foobarbaz1"
+    @user.password_confirmation = "foobarbaz1"
+    @user.save
   end
 
   test "should be valid" do
-    assert @user.valid?, "#{@user.username} should be valid"
+    assert @user.valid?
+  end
+
+  test "should not save with no params" do
+    user = User.new
+    assert_not user.save
   end
 
   test "name should be present" do
-    @user = users(:no_username)
+    @user.username = ""
     assert_not @user.valid?
   end
 
   test "email should be present" do
-    @user.email = "     "
+    @user.email = ""
     assert_not @user.valid?
   end
 
@@ -25,19 +35,18 @@ class UserTest < ActiveSupport::TestCase
                          first.last@foo.jp alice+bob@baz.cn]
     valid_addresses.each do |valid_address|
       @user.email = valid_address
-      assert @user.valid?, "#{valid_address.inspect} should be valid"
+      assert @user.valid?, "#{@user.email}, which is #{valid_address} should be valid"
     end
   end
 
   test "email addresses should be unique" do
     duplicate_user = @user.dup
     duplicate_user.email = @user.email.upcase
-    @user.save
     assert_not duplicate_user.valid?
   end
 
   test "password should be present (nonblank)" do
-    @user.password = @user.password_confirmation = " " * 6
+    @user.password = @user.password_confirmation = " " * 16
     assert_not @user.valid?
   end
 

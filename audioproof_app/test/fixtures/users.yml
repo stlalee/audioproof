@@ -1,21 +1,25 @@
 michael:
   username: michael
   email: michael@example.com
-  password_digest: <%= User.digest('password') %>
-  remember_digest: <%= User.digest('password') %>
-
-test:
-  username: test
-  email: test@test.test
-  password_digest: <%= User.digest('test') %>
+  password_digest: <%= User.digest('foobarbazquX1') %>
+  remember_digest: <%= User.digest('foorbarbazquX1') %>
 
 no_username:
   username:
   email: goodemail@aol.net
-  password_digest: <%= User.digest('password') %>
+  password_digest: <%= User.digest('myBADpassword') %>
+  remember_digest: <%= User.digest('myBADpassword') %>
 
 bad_email:
   username: good_username
   email: this_is_not_an_email
-  password_digest: <%= User.digest('password') %>
+  password_digest: <%= User.digest('passwordISBad') %>
+  remember_digest: <%= User.digest('passwordISBad') %>
 
+<% 100.times do |n| %>
+user_<%= n %>:
+  username: <%= "user#{n}" %>
+  email: <%= "user#{n}@example.com" %>
+  password_digest: <%= User.digest('GreatPassword{n}') %>
+  remember_digest: <%= User.digest('GreatPassword{n}') %>
+<% end %>
