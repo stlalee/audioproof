@@ -1,6 +1,11 @@
-<% if @feed_items.any? %>
-  <ol class="posts">
-    <%= render @feed_items %>
-  </ol>
-  <%= will_paginate @feed_items %>
+
+<% for i in @feed_items do %>
+   <% if i.picture.present? %>
+   <!-- This is where the grid will begin displaying pictures -->
+    <div class="col-md-3">
+       <a href="<%=i.picture%>" class="thumbnail">
+       <img class="imgthumbnail" src="<%=i.picture%>">
+       </a>
+    </div>
+   <% end %>
 <% end %>

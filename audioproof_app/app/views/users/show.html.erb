@@ -1,4 +1,5 @@
 <% provide(:title, @user.username) %>
+<div class="container">
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
@@ -7,13 +8,16 @@
       </h1>
     </section>
   </aside>
-  <div class="col-md-8">
-    <% if @user.posts.any? %>
-      <h3>Posts (<%= @user.posts.count %>)</h3>
-      <ol class="posts">
-        <%= render @posts %>
-      </ol>
-      <%= will_paginate @posts %>
-    <% end %>
-  </div>
+</div>
+
+<% for i in @user.posts do %>
+   <% if i.picture.present? %>
+   <!-- This is where the grid will begin displaying pictures -->
+    <div class="col-md-3">
+       <a href="<%=i.picture%>" class="thumbnail">
+       <img class="imgthumbnail" src="<%=i.picture%>">
+       </a>
+    </div>
+   <% end %>
+<% end %>
 </div>
