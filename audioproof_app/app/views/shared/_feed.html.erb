@@ -1,11 +1,17 @@
-
+<% j = 0 %>
 <% for i in @feed_items do %>
    <% if i.picture.present? %>
+   <% j = j + 1 %>
    <!-- This is where the grid will begin displaying pictures -->
-    <div class="col-md-3">
-       <a href="<%=i.picture%>" class="thumbnail">
-       <img class="imgthumbnail" src="<%=i.picture%>">
-       </a>
-    </div>
+   <div class="col-xs-6 col-sm-4 col-md-3">
+      <a href="<%=i.picture%>" class="thumbnail">
+      <img class="imgthumbnail" src="<%=i.picture%>">
+      </a>
+   </div>
+   <% end %>
+   <!-- To keep the grid looking clean every 4 entries -->
+   <% if j == 4 %>
+      <div class="clearfix hidden-sm-up"></div>
+      <% j = 0 %>
    <% end %>
 <% end %>
