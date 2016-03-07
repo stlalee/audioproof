@@ -5,6 +5,15 @@
     <%= post.content.html_safe %>
     <%= image_tag post.picture.url if post.picture? %>
   </span>
+  <div class="col-md-8">
+	<% if post.comments.any? %>
+      <h4>Comments (<%= @post.comments.count %>)</h4>
+      <ol class="comments">
+	    <%= render post.comments %>
+	  </ol>
+      <%= will_paginate post.comments %>
+    <% end %>
+  </div>
   <span class="timestamp">
     Posted <%= time_ago_in_words(post.created_at) %> ago.
     <% if current_user == (post.user) %>
@@ -12,4 +21,9 @@
                                        data: { confirm: "You sure?" } %>
     <% end %>
   </span>
+  <div class="row">
+    <section class="comment_form">
+      <%= render 'shared/comment_form' %>
+    </section>
+  </div>
 </li>
