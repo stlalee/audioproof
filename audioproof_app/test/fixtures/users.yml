@@ -2,7 +2,7 @@ michael:
   username: michael
   email: michael@example.com
   password_digest: <%= User.digest('foobarbazquX1') %>
-  remember_digest: <%= User.digest('foorbarbazquX1') %>
+  remember_digest: <%= User.digest('foobarbazquX1') %>
 
 no_username:
   username:
