@@ -1,8 +1,8 @@
 <li id="comment-<%= comment.id %>">
   <% if comment.anonymous_comment %>
-  <span class="user">Anonymous</span>
+  <span class="user">Anonymous says:</span>
   <% else %>
-  <span class="user"><%= link_to '#', comment.user %></span>
+  <span class="user"><%= link_to '#'+comment.user.username %> says: </span>
   <% end %>
   <span class="content">
     <%= comment.comment_body.html_safe %>
@@ -14,3 +14,4 @@
                             data: { confirm: "Are you sure you want to delete this comment?" } %>
   </span>
 </li>
+
