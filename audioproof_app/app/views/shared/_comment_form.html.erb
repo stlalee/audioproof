@@ -1,10 +1,11 @@
-<%= form_for(Comment.new) do |f| %>
+<%= form_for(@comment, html: {multipart: true }) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
+    <%= f.label :comment_body, "New comment" %><br/>
     <%= f.text_area :comment_body, placeholder: "Compose new comment..." %>
   </div>
   <div class="field">
-    <%= f.label :anonymous_comment, "Comment anonymously" %>
+    <%= f.label :anonymous_comment, "Comment anonymously" %><br/>
     <%= f.check_box :anonymous_comment %>
   </div>
   <%= f.submit "Post comment", class: "btn btn-primary" %>

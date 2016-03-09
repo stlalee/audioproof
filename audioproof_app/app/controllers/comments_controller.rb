@@ -3,12 +3,13 @@ class CommentsController < ApplicationController
   before_action :correct_user,   only: :destroy
 
   def create
+    @post = Post.find(params[:post_id])
     @comment = current_user.comments.build(comment_params)
     if @comment.save
       flash[:success] = "comment posted!"
       redirect_to request.referrer
     else
-      flash[:success] = "error posting comment"
+      flash[:danger] = @comment.errors
       redirect_to request.referrer
     end
   end
