@@ -1,0 +1,17 @@
+<%= div_for comment do %>
+  <% if comment.anonymous_comment %>
+  <span class="user">Anonymous says: </span>
+  <% else %>
+  <span class="user"><%= link_to '#'+comment.user.username %> says: </span>
+  <% end %>
+  <span class="content">
+    <%= comment.comment_body.html_safe %>
+  </span>
+  <span class="timestamp">
+    Comment left <%= time_ago_in_words(comment.created_at) %> ago.
+    <% if current_user == (comment.user) %>
+      <%= link_to("Delete comment", [comment.post, comment], method: :delete,
+                            data: { confirm: "Are you sure you want to delete this comment?" }) %>
+    <% end %>
+  </span>
+<% end %>
