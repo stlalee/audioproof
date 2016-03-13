@@ -1,5 +1,10 @@
 <!DOCTYPE html>
+<link href='https://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'>
+<% if not logged_in? %>
+<html class="fullscreen_post_bg" style="background-image: url(assets/synths.jpg)">
+<% else %>
 <html>
+<% end %>
   <head>
     <title><%= full_title(yield(:title)) %></title>
     <%= stylesheet_link_tag "application", media: "all",
@@ -16,7 +21,7 @@
       <% end %>
       <%= yield %>
       <%= render 'layouts/footer' %>
-      <%= debug(params) if Rails.env.development? %>
+      <!-- <%= debug(params) if Rails.env.development? %> -->
     </div>
   </body>
 </html>
