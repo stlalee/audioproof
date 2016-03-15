@@ -1,9 +1,10 @@
 <li id="post-<%= @post.id %>">
   <%= link_to '<-- Back', request.referrer || root_url %><br/>
   <span class="user"><%= link_to '#'+@post.user.username, @post.user %></span><br/>
-  <span class="content">
-    <%= @post.content.html_safe %>
-    <%= image_tag @post.picture.url if @post.picture? %>
+  <span class="col-md-8">
+     <section class="postContent">
+        <%= @post.content.html_safe %>
+     </section>
   </span>
   <span class="timestamp">
     Posted <%= time_ago_in_words(@post.created_at) %> ago.
@@ -12,7 +13,10 @@
                                        data: { confirm: "You sure?" } %>
     <% end %>
   </span>
-  <div class="col-md-8">
+  <hr>
+   
+  <section class="postComments">
+  <div class="col-md-4">
     <% if @post.comments.any? %>
       <h4>Comments (<%= @post.comments.count %>)</h4>
       <ol class="comments">
@@ -20,7 +24,10 @@
       </ol>
     <% end %>
   </div>
-  <div class="col-md-4">
+  </section>
+   
+  <section class="potsForm">
+  <div>
     <section class="comment_form">
       <%= form_for [@post, Comment.new] do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
@@ -35,5 +42,6 @@
         <%= f.submit "Post comment", class: "btn btn-primary" %>
       <% end %>
     </section>
+     </section>
   </div>
 </li>
