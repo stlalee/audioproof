@@ -13,6 +13,10 @@ class PostsController < ApplicationController
       @post = Post.find(params[:id])
     end
   end
+   
+  def tagged
+    @posts = Post.tagged_with(params[:tag])
+  end
 
   def create
     @post = current_user.posts.build(post_params)
