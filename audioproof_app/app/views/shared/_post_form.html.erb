@@ -3,6 +3,9 @@
   <div class="field">
     <%= f.text_area :content, placeholder: "Compose new post..." %>
   </div>
+  <div class="field">
+    <%= f.text_field :all_tags, placeholder: "Tags separated by comma" %>
+  </div>
   <%= f.submit "Post", class: "btn btn-primary" %>
   <span class="picture">
     <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>

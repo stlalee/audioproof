@@ -1,0 +1,19 @@
+<% j = 0 %>
+<% i = @posts %>
+<% i.each do |i| %>
+   <% if i.picture.present? %>
+   <% j = j + 1 %>
+   <!-- This is where the grid will begin displaying pictures -->
+   <div class="col-xs-6 col-sm-4 col-md-3">
+      <%= link_to image_tag(i.picture, :class => "thumbnail"), i %>
+   </div>
+   <% else %>
+      <div class="col-xs-6 col-sm-4 col-md-3">
+      <%= link_to image_tag('/assets/no-img.png', :class =>                   "thumbnail"), i %>
+      </div>
+   <% end %>
+   <!-- To keep the grid looking clean every 4 entries -->
+   <% if j == 4 %>
+      <div class="clearfix hidden-sm-up"></div>
+   <% end %>
+<% end %> 

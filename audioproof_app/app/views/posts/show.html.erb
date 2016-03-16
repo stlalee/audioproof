@@ -13,6 +13,7 @@
                                        data: { confirm: "You sure?" } %>
     <% end %>
   </span>
+   <h3>Tags:</h3> <%=raw tag_links(@post.all_tags)%>
   <hr>
    
   <section class="postComments">
@@ -26,7 +27,7 @@
   </div>
   </section>
    
-  <section class="potsForm">
+  <section class="postsForm">
   <div>
     <section class="comment_form">
       <%= form_for [@post, Comment.new] do |f| %>
