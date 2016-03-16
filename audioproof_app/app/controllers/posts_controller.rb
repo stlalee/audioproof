@@ -2,8 +2,16 @@ class PostsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
   before_action :correct_user,   only: :destroy
 
+  def index
+    @posts = Post.all
+  end
+
   def show
-    @post = Post.find(params[:id])
+    if params[:tag]
+      @posts = Post.tagged_with(params[:tag])
+    else
+      @posts = Post.all
+    end
   end
 
   def create
@@ -26,7 +34,7 @@ class PostsController < ApplicationController
   private
 
     def post_params
-      params.require(:post).permit(:content, :picture)
+      params.require(:post).permit(:content, :picture, :all_tags)
     end
 
     def correct_user
