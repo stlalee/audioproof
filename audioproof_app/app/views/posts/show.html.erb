@@ -13,7 +13,7 @@
                                        data: { confirm: "You sure?" } %>
     <% end %>
   </span>
-   <h3>Tags:</h3> <%=raw @post.all_tags %>
+   <h3>Tags:</h3> <%=raw tag_links(@post.all_tags)%>
   <hr>
    
   <section class="postComments">

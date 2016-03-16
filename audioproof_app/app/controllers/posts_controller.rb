@@ -8,9 +8,9 @@ class PostsController < ApplicationController
 
   def show
     if params[:tag]
-      @posts = Post.tagged_with(params[:tag])
+      @post = Post.tagged_with(params[:tag])
     else
-      @posts = Post.all
+      @post = Post.find(params[:id])
     end
   end
 
