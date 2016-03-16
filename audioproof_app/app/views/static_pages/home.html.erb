@@ -14,9 +14,32 @@
     </div>
   </div>
 <% else %>
-  <div class="center jumbotron">
-    <h1 align="center">Welcome to AudioProof</h1>
+  <div class="row">
+      <div class="col-md-4"></div>
       
-    <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+      <div class="col-md-4">
+          <div class="row"><br><br><br><br><br><br><br></div>
+          <div class="panel panel-default">
+              <div class="panel-heading panel-heading-custom"><center><font color="white"><b>AUDIOPROOF</b></font></center></div>
+              <div class="panel-body">
+                      <%= form_for(:session, url: login_path) do |f| %>
+                      <font color="black"><%= f.label :email %></font>
+                      <%= f.email_field :email, class: 'form-control' %>
+                      <font color="black"><%= f.label :password %></font>
+                      <%= f.password_field :password, class: 'form-control' %>
+                      <%= f.label :remember_me, class: "checkbox inline" do %>
+                      <font color="black"><%= f.check_box :remember_me %>
+                      <font color="black"><span>Remember me on this computer</span></font>
+                      <% end %>
+                      <%= f.submit "Log In", class: "btn btn-primary" %>
+                      <% end %>
+                      <div class="row"><br></div>
+                      <font color="black" size="1.8"><p>New user? <%= link_to "Sign up", signup_path %></p></font>
+              </div>   
+          </div>
+      </div>
+      <div class="col-md-4"></div>
   </div>
+      
+      <div class="row"><br><br><br><br></div>
 <% end %>
